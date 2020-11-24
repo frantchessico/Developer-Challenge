@@ -9,10 +9,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './pipes/filter.pipe';
 import { ExportAsModule } from 'ngx-export-as';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsComponent } from './components/details/details.component';
 import { MatButtonModule } from '@angular/material/button';
-import { FooterComponent } from './components/footer/footer.component'
+import { FooterComponent } from './components/footer/footer.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { FooterComponent } from './components/footer/footer.component'
     HttpClientModule,
     ExportAsModule,
     FormsModule,
-    MatButtonModule
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatAutocompleteModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

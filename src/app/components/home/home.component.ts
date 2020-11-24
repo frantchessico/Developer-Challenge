@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { CountryInterface } from '../../model/country';
 import { ExportAsService, ExportAsConfig, SupportedExtensions } from 'ngx-export-as';
+import {FormControl} from '@angular/forms';
+import {Observable} from 'rxjs';
+import {map, startWith} from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-home',
@@ -9,6 +13,8 @@ import { ExportAsService, ExportAsConfig, SupportedExtensions } from 'ngx-export
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  myControl = new FormControl();
+  filteredOptions: Observable<string[]> | undefined;
   public filterPosts = '';
   config: ExportAsConfig = {
     type: 'pdf',
@@ -34,7 +40,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+     
     this.dataApi.getCountriesInffo().then(data => {
       data.forEach(data => {
         this.countries = data;
