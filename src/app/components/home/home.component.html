@@ -1,0 +1,63 @@
+<div class="my-5">
+  <div class="row justify-content-center">
+
+    <div class="col-md-6">
+      <div class="input-group md-form form-sm pl-0">
+      <input class="form-control my-0 py-1" type="text" placeholder="Estou buscando por ..." aria-label="Search"
+        name="filterPosts" [(ngModel)]="filterPosts">
+      <div class="input-group-append">
+        <span class="input-group-text amber lighten-3" id="basic-text1"><i class="fas fa-search"
+            aria-hidden="true"></i></span>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div  class="col-md-12 my-2" *ngFor="let country of countries | filter:filterPosts">
+      <table id="country" class="table">
+        <thead class="black white-text">
+          <tr>
+            <th scope="col">Pais</th>
+            <th scope="col">Capital</th>
+            <th scope="col">Região</th>
+            <th scope="col">Área em Km2</th>
+            <th scope="col">População</th>
+            <th scope="col">Fuso horario</th>
+            <th scope="col">Bandeira</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">{{country.name}}</th>
+            <td>{{country.capital}}</td>
+            <td>{{country.region}}</td>
+            <td>{{country.area}}</td>
+            <td>{{country.population}}</td>
+            <td>{{country.timezones}}</td>
+            <!-- <td>Ver</a></td> -->
+            <td><a class="link-item" href="{{country.flag}}" target="_blanck"><img class="fluid-img responsive-img img" src="{{country.flag}}" alt="{{country.flag}}"></a></td>
+          </tr>
+
+
+        </tbody>
+      </table>
+
+
+      <a (click)="exportAs('xlsx')" class="btn btn-primary btn-sm shadow-0 z-depth-0">Exportar (xlsx)</a>
+      <a (click)="exportAs('pdf')" class="btn btn-secondary btn-sm shadow-0 z-depth-0">Exportar (pdf)</a>
+      <a (click)="exportAs('xls')" class="btn btn-indigo btn-sm shadow-0 z-depth-0">Exportar (xls)</a>
+      <a (click)="exportAs('xml')" class="btn btn-default btn-sm shadow-0 z-depth-0">Exportar (xml)</a>
+      <a (click)="exportAs('csv')" class="btn btn-orange btn-sm shadow-0 z-depth-0">Exportar (csv)</a>
+
+
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+
